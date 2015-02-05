@@ -1,7 +1,7 @@
-Git Tutorial
+GitHub FLOSS Tutorial
 ===
 
 Miami University ACM
 ---
 
-2014-10-22
+2015-02-05
