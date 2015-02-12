@@ -70,6 +70,23 @@ Equivalent Rust:
         x == y;
     }
 
+=======================
+Immutability By Default
+=======================
+
+    - Variables are not mutable by default
+    - Must explicitly request mutability
+
+.. code-block:: rust
+
+    let x = 100;
+    x += 10; // compiler error
+
+.. code-block:: rust
+
+    let mut x = 100;
+    x += 10;
+
 ==============
 Type Inference
 ==============
