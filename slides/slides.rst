@@ -1,107 +1,70 @@
 .. role:: bash(code)
    :language: bash
 
-===================================================
-Contributing to FLOSS Projects using Git and GitHub
-===================================================
+.. role:: rust(code)
+   :language: rust
+
+=============================
+The Rust Programming Language
+=============================
 
 Nate Mara
 
-2015-02-05
+2015-02-12
 
 =====
 Intro
 =====
 
-Git is a free and open source version control tool.
+Rust is a systems programming language that combines the speed of C/C++ with
+the 'safety' of garbage-collected languages like Python & Java. It is being
+developed by Mozilla for their new browser engine, Servo.
 
-As of 2014, GitHub reports having over 3.4 million users and with 16.7 million
-repositories making it the largest code host in the world
+=========
+Why Rust?
+=========
 
-===========
-Info on Git
-===========
+Rust has several features that make it a good choice for a project:
 
-http://miami-acm.github.io/git-tutorial/
+    - Zero-cost abstractions
+    - Guaranteed memory safety at compile time
+    - Trait-based generics
+    - Type inference
+    - Pattern matching
 
-=====
-Steps
-=====
+======================
+Zero Cost Abstractions
+======================
 
-    #. Pick a project to contribute to
-    #. Fork the project's repository
-    #. Make your changes
-    #. Submit a pull request
+`Python Example <https://gist.github.com/natemara/e84c14966384c428a3d8>`_
 
-==============
-Pick a Project
-==============
+========================
+Guaranteed Memory Safety
+========================
 
-    - Use open source projects
-    - Find bugs
-    - Find absent features
-    - Look through Issues
+This has a few important implications:
 
-================
-Fork The Project
-================
+    - No Segmentation Faults!
+    - No memory leaks!
+    - No data races in multithreaded programs!
 
-    - Creates a copy of the whole repository under your username
-    - Allows you to make changes to the code without affecting work that has
-      already been done
-    - Can fork as many projects as you want to
+====================
+Trait Based Generics
+====================
 
-=================
-Make Your Changes
-=================
+Consider this C++ code:
 
-    - Most important part
-    - Make sure to test
-    - Follow existing coding guidelines (CONTRIBUTING.md)
-    - Comment any functions/classes you add
-    - Commit often and use descriptive commit messages (http://whatthecommit.com/)
-    - Push to origin after done with commits
+.. code-block:: cpp
 
-=====================
-Submit a Pull Request
-=====================
+    template <class T>
+    bool foo(T x, T y) {
+        return x == y;
+    }
 
-    - Allows the maintainers of the project to decide weather or not to
-      integrate your code with the main repository
-    - Include explicit description (this does not mean with expletives)
-    - Maintainers may ask for clarifiction or changes so that your code more
-      cleanly integrates with existing code.
+Equivalent Rust:
 
-==========
-Next Steps
-==========
+.. code-block:: rust
 
-    - One of two things will happen
-
-        - Your code gets merged
-        - Your code doesn't get merged
-
-======
-Merged
-======
-
-    - You are now a valued member of a free software project
-    - Future pull requests can be merged easier
-    - You learned something!
-
-========
-No Merge
-========
-
-    - Project has lazy maintainers
-    - You didn't test well enough
-    - Feature is already being worked on by someone else
-    - You learned something!
-
-==========
-Questions?
-==========
-
-=============
-Example Time!
-=============
+    fn foo<T: PartialEq>(x: T, y: T) -> bool {
+        x == y;
+    }
