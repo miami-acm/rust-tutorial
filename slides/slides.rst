@@ -132,3 +132,17 @@ No Null Pointers!
         Some(card) => println!("You picked {}", card),
         None => println!("No more cards left!"),
     }
+
+=========
+Ownership
+=========
+
+Five rules of ownership
+
+    #. You control when that resource is deallocated.
+    #. You may lend that resource, immutably, to as many borrowers as you'd like.
+    #. You may lend that resource, mutably, to a single borrower. BUT
+    #. Once you've done so, you may not also lend it out otherwise, mutably or
+       immutably.
+    #. You may not lend it out mutably if you're currently lending it to someone.
+
