@@ -9,7 +9,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" href="reveal.js/css/reveal.min.css"/>
     <style type="text/css">code{white-space: pre;}</style>
-    <link rel="stylesheet" href="reveal.js/css/theme/moon.css" id="theme">
+    <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+    </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
     <!-- If the query includes 'print-pdf', include the PDF print sheet -->
     <script>
       if( window.location.search.match( /print-pdf/gi ) ) {
@@ -32,98 +51,100 @@
 <section class="slide level1">
 
 
+
 </section>
-<section id="contributing-to-floss-projects-using-git-and-github" class="slide level1">
-<h1>Contributing to FLOSS Projects using Git and GitHub</h1>
+<section id="the-rust-programming-language" class="slide level1">
+<h1>The Rust Programming Language</h1>
 <p>Nate Mara</p>
-<p>2015-02-05</p>
+<p>2015-02-12</p>
 </section>
 <section id="intro" class="slide level1">
 <h1>Intro</h1>
-<p>Git is a free and open source version control tool.</p>
-<p>As of 2014, GitHub reports having over 3.4 million users and with 16.7 million repositories making it the largest code host in the world</p>
+<p>Rust is a systems programming language that combines the speed of C/C++ with the 'safety' of garbage-collected languages like Python &amp; Java. It is being developed by Mozilla for their new browser engine, Servo.</p>
 </section>
-<section id="info-on-git" class="slide level1">
-<h1>Info on Git</h1>
-<p><a href="http://miami-acm.github.io/git-tutorial/" class="uri">http://miami-acm.github.io/git-tutorial/</a></p>
-</section>
-<section id="steps" class="slide level1">
-<h1>Steps</h1>
-<ol>
-<li class="fragment">Pick a project to contribute to</li>
-<li class="fragment">Fork the project's repository</li>
-<li class="fragment">Make your changes</li>
-<li class="fragment">Submit a pull request</li>
-</ol>
-</section>
-<section id="pick-a-project" class="slide level1">
-<h1>Pick a Project</h1>
+<section id="why-rust" class="slide level1">
+<h1>Why Rust?</h1>
+<p>Rust has several features that make it a good choice for a project:</p>
 <ul>
-<li class="fragment">Use open source projects</li>
-<li class="fragment">Find bugs</li>
-<li class="fragment">Find absent features</li>
-<li class="fragment">Look through Issues</li>
+<li class="fragment">Zero-cost abstractions</li>
+<li class="fragment">Guaranteed memory safety at compile time</li>
+<li class="fragment">Trait-based generics</li>
+<li class="fragment">Type inference</li>
+<li class="fragment">Pattern matching</li>
 </ul>
 </section>
-<section id="fork-the-project" class="slide level1">
-<h1>Fork The Project</h1>
+<section id="zero-cost-abstractions" class="slide level1">
+<h1>Zero Cost Abstractions</h1>
+<p><a href="https://gist.github.com/natemara/e84c14966384c428a3d8">Python Example</a></p>
+</section>
+<section id="guaranteed-memory-safety" class="slide level1">
+<h1>Guaranteed Memory Safety</h1>
+<p>This has a few important implications:</p>
 <ul>
-<li class="fragment">Creates a copy of the whole repository under your username</li>
-<li class="fragment">Allows you to make changes to the code without affecting work that has already been done</li>
-<li class="fragment">Can fork as many projects as you want to</li>
+<li class="fragment">No Segmentation Faults!</li>
+<li class="fragment">No memory leaks!</li>
+<li class="fragment">No data races in multithreaded programs!</li>
+<li class="fragment">No Null Pointers!!!!!</li>
 </ul>
 </section>
-<section id="make-your-changes" class="slide level1">
-<h1>Make Your Changes</h1>
-<ul>
-<li class="fragment">Most important part</li>
-<li class="fragment">Make sure to test</li>
-<li class="fragment">Follow existing coding guidelines (CONTRIBUTING.md)</li>
-<li class="fragment">Comment any functions/classes you add</li>
-<li class="fragment">Commit often and use descriptive commit messages (<a href="http://whatthecommit.com/" class="uri">http://whatthecommit.com/</a>)</li>
-<li class="fragment">Push to origin after done with commits</li>
-</ul>
+<section id="trait-based-generics" class="slide level1">
+<h1>Trait Based Generics</h1>
+<p>Consider this C++ code:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="kw">template</span> &lt;<span class="kw">class</span> T&gt;
+<span class="dt">bool</span> foo(T x, T y) {
+    <span class="kw">return</span> x == y;
+}</code></pre>
+<p>Equivalent Rust:</p>
+<pre class="sourceCode rust"><code class="sourceCode rust"><span class="kw">fn</span> foo&lt;T: PartialEq&gt;(x: T, y: T) -&gt; <span class="kw">bool</span> {
+    x == y;
+}</code></pre>
 </section>
-<section id="submit-a-pull-request" class="slide level1">
-<h1>Submit a Pull Request</h1>
-<ul>
-<li class="fragment">Allows the maintainers of the project to decide weather or not to integrate your code with the main repository</li>
-<li class="fragment">Include explicit description (this does not mean with expletives)</li>
-<li class="fragment">Maintainers may ask for clarifiction or changes so that your code more cleanly integrates with existing code.</li>
-</ul>
+<section id="type-inference" class="slide level1">
+<h1>Type Inference</h1>
+<p>The type of variables does not explicitly have to be defined when defining variables.</p>
+<pre class="sourceCode rust"><code class="sourceCode rust"><span class="kw">let</span> <span class="kw">mut</span> hashes = HashSet::new();
+hashes.insert(<span class="st">&quot;00f013675328fac432&quot;</span>);</code></pre>
 </section>
-<section id="next-steps" class="slide level1">
-<h1>Next Steps</h1>
+<section id="algebraic-data-types" class="slide level1">
+<h1>Algebraic Data Types</h1>
 <ul>
-<li class="fragment"><p>One of two things will happen</p>
+<li>Create new types based on combinations of other types</li>
+<li>Not the same as creating classes with getters and setters</li>
+<li>This is a type that can only have a specific number of values</li>
+</ul>
+<pre class="sourceCode rust"><code class="sourceCode rust"><span class="kw">enum</span> Suit {
+    Hearts,
+    Clubs,
+    Diamonds,
+    Spades,
+}</code></pre>
+</section>
+<section id="patten-matching" class="slide level1">
+<h1>Patten Matching</h1>
 <ul>
-<li>Your code gets merged</li>
-<li>Your code doesn't get merged</li>
+<li class="fragment">Borrowed from Haskell</li>
+<li class="fragment">Can match against boolean conditions or variants of an enum.</li>
+<li class="fragment">More powerful than a switch statement as it forces you to account for all possibilities.</li>
+</ul>
+<pre class="sourceCode rust"><code class="sourceCode rust"><span class="kw">match</span> card.suit {
+    Hearts =&gt; <span class="ot">println!</span>(<span class="st">&quot;Hearts&quot;</span>),
+    Clubs =&gt; <span class="ot">println!</span>(<span class="st">&quot;Clubs&quot;</span>),
+    Spades =&gt; <span class="ot">println!</span>(<span class="st">&quot;Spades&quot;</span>),
+} <span class="co">// will not compile because Diamonds case was not dealt with</span></code></pre>
+</section>
+<section id="no-null-pointers" class="slide level1">
+<h1>No Null Pointers!</h1>
+<ul>
+<li class="fragment">No way to create a null pointer in normal Rust</li>
+<li class="fragment"><p>Only used when interfacing with C</p>
+<ul>
+<li>Have to explicitly check for null pointer</li>
 </ul></li>
 </ul>
-</section>
-<section id="merged" class="slide level1">
-<h1>Merged</h1>
-<ul>
-<li class="fragment">You are now a valued member of a free software project</li>
-<li class="fragment">Future pull requests can be merged easier</li>
-<li class="fragment">You learned something!</li>
-</ul>
-</section>
-<section id="no-merge" class="slide level1">
-<h1>No Merge</h1>
-<ul>
-<li class="fragment">Project has lazy maintainers</li>
-<li class="fragment">You didn't test well enough</li>
-<li class="fragment">Feature is already being worked on by someone else</li>
-<li class="fragment">You learned something!</li>
-</ul>
-</section>
-<section id="questions" class="slide level1">
-<h1>Questions?</h1>
-</section>
-<section id="example-time" class="slide level1">
-<h1>Example Time!</h1>
+<pre class="sourceCode rust"><code class="sourceCode rust"><span class="kw">match</span> deck.draw_card() {
+    <span class="kw">Some</span>(card) =&gt; <span class="ot">println!</span>(<span class="st">&quot;You picked {}&quot;</span>, card),
+    <span class="kw">None</span> =&gt; <span class="ot">println!</span>(<span class="st">&quot;No more cards left!&quot;</span>),
+}</code></pre>
 </section>
     </div>
   </div>
