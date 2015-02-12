@@ -99,6 +99,17 @@ code > span.er { color: #ff0000; font-weight: bold; }
     x == y;
 }</code></pre>
 </section>
+<section id="immutability-by-default" class="slide level1">
+<h1>Immutability By Default</h1>
+<ul>
+<li class="fragment">Variables are not mutable by default</li>
+<li class="fragment">Must explicitly request mutability</li>
+</ul>
+<pre class="sourceCode rust"><code class="sourceCode rust"><span class="kw">let</span> x = <span class="dv">100</span>;
+x += <span class="dv">10</span>; <span class="co">// compiler error</span></code></pre>
+<pre class="sourceCode rust"><code class="sourceCode rust"><span class="kw">let</span> <span class="kw">mut</span> x = <span class="dv">100</span>;
+x += <span class="dv">10</span>;</code></pre>
+</section>
 <section id="type-inference" class="slide level1">
 <h1>Type Inference</h1>
 <p>The type of variables does not explicitly have to be defined when defining variables.</p>
