@@ -10,7 +10,7 @@ The Rust Programming Language
 
 Nate Mara
 
-2015-02-12
+2016-03-30
 
 =====
 Intro
